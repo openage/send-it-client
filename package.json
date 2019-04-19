@@ -1,6 +1,6 @@
 {
     "name": "@open-age/send-it-client",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "a client to connect to open-age send-it",
     "main": "index.js",
     "scripts": {
@@ -19,7 +19,7 @@
         "send-it",
         "client"
     ],
-    "dependencies": {
+    "peerDependencies": {
         "@open-age/logger": "^1.1.0",
         "config": "^1.31.0",
         "node-rest-client": "^3.1.0",
