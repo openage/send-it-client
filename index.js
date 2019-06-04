@@ -29,29 +29,23 @@ const getRole = (param, context) => {
             }
             return false
         })
-    } else {
-        role = param // assuming this was a role
     }
 
-    if (!role) {
-        return null
-    }
-
-    if (role.id) {
+    if (role && role.id) {
         return {
             id: role.id
         }
-    } else if (role.email || role.phone || role.address) {
+    }
+
+    if (param.email || param.phone || param.address) {
         return {
-            email: role.email,
-            phone: role.phone,
-            address: role.address
-        }
-    } else {
-        return {
-            id: role
+            email: param.email,
+            phone: param.phone,
+            address: param.address
         }
     }
+
+    return null
 }
 
 /**
@@ -84,6 +78,7 @@ const dispatch = async (message, context) => {
             'Content-Type': 'application/json'
         },
         data: {
+            data: message.data,
             to: recipients,
             from: message.from,
             conversation: message.conversation,
