@@ -73,6 +73,7 @@ const dispatch = async (message, context) => {
         }
     }
 
+    let options = message.options || {}
     const args = {
         headers: {
             'Content-Type': 'application/json'
@@ -81,10 +82,11 @@ const dispatch = async (message, context) => {
             data: message.data,
             to: recipients,
             from: message.from,
+            modes: message.modes || options.modes,
             conversation: message.conversation,
             subject: message.subject,
             body: message.body,
-            options: message.options
+            options: options
         }
     }
 
