@@ -26,7 +26,7 @@ exports.archive = async (conversation, context) => {
     }, context)
 }
 
-exports.all = async (query, context) => {
+exports.search = async (query, context) => {
     return conversationApi.search(query, null, context)
 }
 
