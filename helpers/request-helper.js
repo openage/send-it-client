@@ -21,7 +21,7 @@ const put = async (id, model, options, collection, context) => {
     let response = await client.putPromise(url, args)
     if (!response.data.isSuccess) {
         context.logger.error(response.data.message || response.data.error)
-        throw new Error(`invalid response from send-it`)
+        throw new Error(response.data.message || response.data.error)
     }
 
     return response.data.data
@@ -43,7 +43,7 @@ const get = async (id, options, collection, context) => {
     let response = await client.getPromise(url, args)
     if (!response.data.isSuccess) {
         context.logger.error(response.data.message || response.data.error)
-        throw new Error(`invalid response from send-it`)
+        throw new Error(response.data.message || response.data.error)
     }
 
     return response.data.data
@@ -67,7 +67,7 @@ const search = async (query, options, collection, context) => {
     let response = await client.getPromise(url, args)
     if (!response.data.isSuccess) {
         context.logger.error(response.data.message || response.data.error)
-        throw new Error(`invalid response from send-it`)
+        throw new Error(response.data.message || response.data.error)
     }
 
     return response.data.items
@@ -90,7 +90,7 @@ const post = async (model, options, collection, context) => {
     let response = await client.postPromise(url, args)
     if (!response.data.isSuccess) {
         context.logger.error(response.data.message || response.data.error)
-        throw new Error(`invalid response from send-it`)
+        throw new Error(response.data.message || response.data.error)
     }
 
     return response.data.data
