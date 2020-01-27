@@ -14,23 +14,25 @@ exports.getRole = (param, context) => {
         role = param.role
     } else if (param.roles) {
         if (param.roles.length === 1) {
-            return param.role
+            role = param.roles[0]
+        } else {
+            role = param.roles.find(r => {
+                if (context.organization && r.organization) {
+                    return r.organization.id === context.organization.id
+                }
+                if (!context.organization && (!r.employee || !r.student)) {
+                    return true
+                }
+                return false
+            })
         }
-
-        role = param.roles.find(r => {
-            if (context.organization && r.organization) {
-                return r.organization.id === context.organization.id
-            }
-            if (!context.organization && (!r.employee || !r.student)) {
-                return true
-            }
-            return false
-        })
     }
 
     if (role && role.id) {
         return {
-            id: role.id
+            role: {
+                id: role.id
+            }
         }
     }
 

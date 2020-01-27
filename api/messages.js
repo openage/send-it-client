@@ -4,6 +4,8 @@ const roleHelper = require('../helpers/role-helper')
 const headerHelper = require('../helpers/header-helper')
 const client = new (require('node-rest-client-promise')).Client()
 
+const api = require('../helpers/request-helper')('messages')
+
 /**
  * dispatches the message to providers.send-it.url using the role from context
  * @param { to, subject, body, options} message
@@ -62,4 +64,14 @@ exports.dispatch = async (message, context) => {
     }
 
     return response.data.data
+}
+
+exports.create = exports.dispatch
+
+exports.search = async (query, context) => {
+    return api.search(query, null, context)
+}
+
+exports.get = async (id, context) => {
+    return api.get(id, null, context)
 }
