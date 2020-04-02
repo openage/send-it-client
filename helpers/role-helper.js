@@ -36,8 +36,9 @@ exports.getRole = (param, context) => {
         }
     }
 
-    if (param.email || param.phone || param.address) {
+    if (param.code || param.email || param.phone || param.address) {
         return {
+            code: param.code,
             email: param.email,
             phone: param.phone,
             address: param.address

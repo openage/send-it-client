@@ -27,6 +27,28 @@ const put = async (id, model, options, collection, context) => {
     return response.data.data
 }
 
+const remove = async (id, options, collection, context) => {
+    options = options || {}
+    const args = {
+        headers: headerHelper.build(context)
+    }
+
+    let url = buildUrl(config.url, {
+        path: `${collection}/${id}`,
+        queryParams: options.query
+    })
+
+    context.logger.debug(`sending payload to url: ${url}`)
+
+    let response = await client.deletePromise(url, args)
+    if (!response.data.isSuccess) {
+        context.logger.error(response.data.message || response.data.error)
+        throw new Error(response.data.message || response.data.error)
+    }
+
+    return response.data.data
+}
+
 const get = async (id, options, collection, context) => {
     options = options || {}
     const args = {
@@ -109,6 +131,9 @@ module.exports = (collection) => {
         },
         update: async (id, model, options, context) => {
             return put(id, model, options, collection, context)
+        },
+        remove: async (id, options, context) => {
+            return remove(id, options, collection, context)
         },
         post: async (model, options, context) => {
             return post(model, options, collection, context)
