@@ -42,6 +42,7 @@ exports.dispatch = async (message, context) => {
             conversation: message.conversation,
             subject: message.subject,
             body: message.body,
+            meta: message.meta,
             options: options
         }
     }
