@@ -25,7 +25,7 @@ exports.dispatch = async (message, context) => {
             }
         }
     } else if (message.to) {
-        let to = roleHelper.getRole(message.to, context)
+        let to = message.to === 'everyone' ? message.to : roleHelper.getRole(message.to, context)
         if (to) {
             recipients.push(to)
         }
