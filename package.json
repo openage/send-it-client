@@ -25,7 +25,7 @@
         "@open-age/logger": "^1.3.6",
         "config": "^1.31.0",
         "node-rest-client": "^3.1.0",
-        "node-rest-client-promise": "^2.0.0"
+        "node-rest-client-promise": "^3.1.1"
     },
     "author": "Sunny Parkash <sunny.parkash@gmail.com> (https://github.com/sunnyparkash)",
     "license": "WTFPL",
@@ -46,7 +46,7 @@
         "eslint-plugin-standard": "^4.0.0",
         "mocha": "^6.1.4",
         "node-rest-client": "^3.1.0",
-        "node-rest-client-promise": "^2.0.0"
+        "node-rest-client-promise": "^3.1.1"
     },
     "dependencies": {
         "build-url": "^2.0.0"
